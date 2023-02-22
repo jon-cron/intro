@@ -4,7 +4,7 @@ import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
-
+// NOTE npm run dev to start localhost 3000
 export default function Home() {
   return (
     <>
