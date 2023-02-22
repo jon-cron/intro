@@ -21,27 +21,40 @@ export default function Car({car}) {
     )
 }
 
-export async function getStaticProps({params}) {
+export async function getServerSideProps({params}){
 
   const req = await fetch(`http://localhost:3000/${params.id}.json`)
   const data = await req.json();
   return {
     props: {car: data}
   }
-}
-
-export async function getStaticPath() {
-
-  const req = await fetch(`http://localhost:3000/${params.id}.json`)
-  const data = await req.json();
-
-  const paths = data.map(car => {
-    return {params: {id: car}}
-  })
-
-  return {
-    paths,
-    fallback: false
-  }
 
 }
+
+// NOTE you can only use ServerSideProps or StaticProps. That is why the functions below are commented.
+// NOTE but we can use both within the application based on the needs of that page
+
+// export async function getStaticProps({params}) {
+
+//   const req = await fetch(`http://localhost:3000/${params.id}.json`)
+//   const data = await req.json();
+//   return {
+//     props: {car: data}
+//   }
+// }
+
+// export async function getStaticPath() {
+
+//   const req = await fetch(`http://localhost:3000/${params.id}.json`)
+//   const data = await req.json();
+
+//   const paths = data.map(car => {
+//     return {params: {id: car}}
+//   })
+
+//   return {
+//     paths,
+//     fallback: false
+//   }
+
+// }
